@@ -1,8 +1,15 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { Badge } from "../../../../components/ui/badge";
 import { Card, CardContent } from "../../../../components/ui/card";
 
 export const Frame5Subsection = (): JSX.Element => {
+  const navigate = useNavigate();
+
+  const handleCardClick = () => {
+    navigate("/restaurant/4");
+  };
+
   // Delivery service logos data
   const deliveryServices = [
     { alt: "Talabat logo" },
@@ -11,7 +18,10 @@ export const Frame5Subsection = (): JSX.Element => {
   ];
 
   return (
-    <Card className="w-full max-w-[383px] rounded-[15px_15px_16.54px_16.54px] shadow-[0px_4.76px_4.76px_#0000004c] overflow-hidden">
+    <Card 
+      className="w-full max-w-[383px] rounded-[15px_15px_16.54px_16.54px] shadow-[0px_4.76px_4.76px_#0000004c] overflow-hidden cursor-pointer hover:shadow-lg transition-shadow"
+      onClick={handleCardClick}
+    >
       <div className="rounded-[15px_15px_0px_0px] [background:url(..//frame-45-7.png)_50%_50%_/_cover,linear-gradient(0deg,rgba(245,245,245,1)_0%,rgba(245,245,245,1)_100%)] relative w-full h-[193px] overflow-hidden">
         <div className="flex items-start gap-[7.82px] absolute top-0 left-0">
           <div className="relative w-[168.99px] h-[40.46px]">

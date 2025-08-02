@@ -1,10 +1,20 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { Badge } from "../../../../components/ui/badge";
 import { Card, CardContent } from "../../../../components/ui/card";
 
 export const DivWrapperSubsection = (): JSX.Element => {
+  const navigate = useNavigate();
+
+  const handleCardClick = () => {
+    navigate("/restaurant/7");
+  };
+
   return (
-    <Card className="w-full max-w-[383px] rounded-[15px_15px_16.54px_16.54px] shadow-[0px_4.76px_4.76px_#0000004c] overflow-hidden">
+    <Card 
+      className="w-full max-w-[383px] rounded-[15px_15px_16.54px_16.54px] shadow-[0px_4.76px_4.76px_#0000004c] overflow-hidden cursor-pointer hover:shadow-lg transition-shadow"
+      onClick={handleCardClick}
+    >
       <div className="relative w-full h-[193px] rounded-[15px_15px_0px_0px] overflow-hidden [background:url(..//frame-45-5.png)_50%_50%_/_cover,linear-gradient(0deg,rgba(245,245,245,1)_0%,rgba(245,245,245,1)_100%)]">
         <div className="flex w-[169px] items-start gap-[7.82px] absolute top-0 left-0">
           <div className="relative w-[168.9px] h-[40.44px]">
