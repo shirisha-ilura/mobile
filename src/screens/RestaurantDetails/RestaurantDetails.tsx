@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, Link } from "react-router-dom";
 import { ArrowLeft, Heart, Share, Star, Clock, MapPin } from "lucide-react";
 import { Button } from "../../components/ui/button";
 import { Card, CardContent } from "../../components/ui/card";
@@ -198,7 +198,8 @@ export const RestaurantDetails = (): JSX.Element => {
             <h3 className="font-semibold text-lg">Recommended</h3>
             
             {restaurant.menuItems.map((item) => (
-              <Card key={item.id} className="border border-gray-200 hover:shadow-md transition-shadow">
+              <Link key={item.id} to={`/restaurant/${restaurant.id}/item/${item.id}`}>
+                <Card className="border border-gray-200 hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-0">
                   <div className="flex">
                     <div className="flex-1 p-4">
@@ -245,6 +246,7 @@ export const RestaurantDetails = (): JSX.Element => {
                   </div>
                 </CardContent>
               </Card>
+              </Link>
             ))}
           </div>
         </div>
