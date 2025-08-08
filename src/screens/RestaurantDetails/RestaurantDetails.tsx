@@ -323,7 +323,7 @@ export const RestaurantDetails = (): JSX.Element => {
 
           <div className="space-y-6">
             {filteredItems.map((item) => (
-              <div key={item.id} className="relative">
+              <div key={item.id} className="relative cursor-pointer" onClick={() => navigate(`/restaurant/${id}/item/${item.id}`)}>
                 <div className="flex gap-4">
                   {/* Item Info */}
                   <div className="flex-1">
@@ -341,11 +341,9 @@ export const RestaurantDetails = (): JSX.Element => {
                       
                       <div className="flex-1">
                         <div className="flex items-center gap-2 mb-1">
-                          <Link to={`/restaurant/${id}/item/${item.id}`}>
-                            <h4 className="font-semibold text-base text-gray-800 hover:text-red-600 transition-colors cursor-pointer">
-                              {item.name}
-                            </h4>
-                          </Link>
+                          <h4 className="font-semibold text-base text-gray-800">
+                            {item.name}
+                          </h4>
                           {item.isBestseller && (
   <div className="flex items-center space-x-1">
     <svg
@@ -412,7 +410,10 @@ export const RestaurantDetails = (): JSX.Element => {
                         {!cartItems[item.id] ? (
                           <Button
   size="sm"
-  onClick={() => addToCart(item.id)}
+  onClick={(e) => {
+    e.stopPropagation();
+    addToCart(item.id);
+  }}
   className="flex items-center justify-center gap-1 bg-white text-green-700 font-bold text-base px-6 py-2 border border-gray-300 rounded-xl shadow-md hover:shadow-md hover:text-green-700 focus:outline-none focus:ring-0 active:shadow-md"
 >
   ADD <span className="text-green-700 text-xl font-bold">+</span>
@@ -421,11 +422,14 @@ export const RestaurantDetails = (): JSX.Element => {
 
 
                         ) : (
-                          <div className="flex items-center gap-2 bg-white border-2 border-red-600 rounded-lg shadow-lg">
+                          <div className="flex items-center gap-2 bg-white border-2 border-red-600 rounded-lg shadow-lg" onClick={(e) => e.stopPropagation()}>
                             <Button
                               size="sm"
                               variant="ghost"
-                              onClick={() => updateCartQuantity(item.id, -1)}
+                             onClick={(e) => {
+                               e.stopPropagation();
+                               updateCartQuantity(item.id, -1);
+                             }}
                               className="text-red-600 hover:bg-red-50 px-2 py-1 h-8 w-8"
                             >
                               -
@@ -436,7 +440,10 @@ export const RestaurantDetails = (): JSX.Element => {
                             <Button
                               size="sm"
                               variant="ghost"
-                              onClick={() => updateCartQuantity(item.id, 1)}
+                             onClick={(e) => {
+                               e.stopPropagation();
+                               updateCartQuantity(item.id, 1);
+                             }}
                               className="text-red-600 hover:bg-red-50 px-2 py-1 h-8 w-8"
                             >
                               +
